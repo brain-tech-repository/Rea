@@ -10,7 +10,7 @@ const ForgotPass = () => {
           <p className="text-[28px] sm:text-[32px] sm leading-[40px] text-center font-['Inter_Display'] font-medium">
             Forgot Password
           </p>
-          <p className="text-[14px] leading-[20px] text-[#525866] text-center font-['Inter']">
+          <p className="text-[14px] leading-[20px] text-[#525866] font-normal text-center font-['Inter']">
             Thank you for signing up. To start enjoying the benefits, let's set up your account.
           </p>
         </div>
