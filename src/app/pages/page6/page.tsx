@@ -1,6 +1,6 @@
 export default function () {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[#E2E4E9] px-4">
+    <div className="flex justify-center items-center h-full w-full bg-[#E2E4E9] px-4">
       <div className="bg-white w-full max-w-[1000px] rounded-[20px] overflow-hidden flex flex-col md:flex-row">
         {/* Left image */}
         <div className="flex justify-center items-center p-8 md:p-10 md:w-1/2">
@@ -11,13 +11,13 @@ export default function () {
           />
         </div>
         {/* verical line  */}
-       <div className=" hidden md:block w-[2px] h-170 bg-gray-500"></div>
+        <div className=" hidden md:block w-[2px] h-170 bg-gray-500"></div>
         {/* Right content */}
         <div className="flex flex-col justify-center items-center text-center   md:px-6 md:w-1/2 gap-5">
           <p className="text-[11px] leading-[12px] tracking-[2%] uppercase font-medium">
             one last thing
           </p>
-          <h2 className="text-[26px] md:text-[32px] leading-[32px] md:leading-[40px] font-medium mt-1 lg:ms-8 md:ms-18   ">
+          <h2 className="text-[26px] md:text-[32px] leading-[32px] md:leading-[40px] font-medium mt-1 lg:ms-8 md:ms-18">
             Go unlimited with a subscription
           </h2>
           <ul className="flex flex-col gap-3 w-full max-w-[20.5rem] mt-4 text-start">
@@ -25,13 +25,13 @@ export default function () {
               <img src="/checkmark.png" alt="" className="w-[14px] h-[14px] mt-1 me-2" />Unlimited conversations with Rea - anytime, anywhere.
             </li>
             <li className="text-[14px] leading-[20px] flex flex-row">
-                <img src="/checkmark.png" alt="" className="w-[14px] h-[14px] mt-1 me-2" />UGet personal insights straight from Bible characters.
+              <img src="/checkmark.png" alt="" className="w-[14px] h-[14px] mt-1 me-2" />UGet personal insights straight from Bible characters.
             </li>
             <li className="text-[14px] leading-[20px flex flex-row]">
-                <img src="/checkmark.png" alt="" className="w-[14px] h-[14px] mt-1 me-2" />UBe the first to meet new Bible characters every week.
+              <img src="/checkmark.png" alt="" className="w-[14px] h-[14px] mt-1 me-2" />UBe the first to meet new Bible characters every week.
             </li>
             <li className="text-[14px] leading-[20px] flex flex-row">
-                <img src="/checkmark.png" alt="" className="w-[14px] h-[14px] mt-1 me-2" />UBe part of the inner circle - explore new stories before they’re public.
+              <img src="/checkmark.png" alt="" className="w-[14px] h-[14px] mt-1 me-2" />UBe part of the inner circle - explore new stories before they’re public.
             </li>
           </ul>
           <div className="mt-4">

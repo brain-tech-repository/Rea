@@ -32,7 +32,7 @@ export default function RootLayout({
       <Sidebar />
 
       {/* Main content */}
-      <main className="flex-1 overflow-auto p-3">{children}</main>
+      <main className="flex-1 overflow-auto p-2">{children}</main>
     </div>
       </body>
     </html>
