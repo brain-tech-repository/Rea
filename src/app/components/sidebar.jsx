@@ -1,12 +1,14 @@
+import Link from 'next/link';
+
 export default function navbar() {
     return (
         <>
             <div className="container-fluid ">
-                <aside className="flex flex-col items-center w-16 h-screen pb-8 pt-3 overflow-y-auto shadow-lg">
+                <aside className="flex flex-col items-center w-16 h-screen py-3 overflow-y-auto  ">
                     <nav className="flex flex-col flex-1 space-y-6">
                         <div className="flex h-[44px] p-3 justify-center items-center gap-[10px rounded-[14px] border border-[var(--stroke-soft-200,#E2E4E9)] bg-white]">
                             <div className="text-[#1B1B08] text-center font-[Gelica] text-[24.788px] font-medium leading-[41.313px]">
-                                Rq
+                                R
                             </div>
                         </div>
                         <div className="flex p-3 justify-center items-center gap-[10px] rounded-[16px]">
@@ -49,7 +51,6 @@ export default function navbar() {
                         </div>
                     </nav>
                     <div className="flex flex-col space-y-6">
-
                         <div className="flex flex-col items-start gap-[10px] px-[12px] self-stretch">
                             <div className="w-[16.25px] h-[16.667px] shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
@@ -58,18 +59,15 @@ export default function navbar() {
                                     <path d="M11.9329 9.99992C11.9329 11.6107 10.6271 12.9166 9.01628 12.9166C7.40545 12.9166 6.09961 11.6107 6.09961 9.99992C6.09961 8.38909 7.40545 7.08325 9.01628 7.08325C10.6271 7.08325 11.9329 8.38909 11.9329 9.99992Z" stroke="#868C98" stroke-width="1.5" />
                                 </svg>
                             </div>
-
                         </div>
-
-
-
                         <div className="flex w-[44px] h-[44px] p-[6px] justify-center items-center gap-[10px] rounded-[14px] border border-[var(--stroke-soft-200,#E2E4E9)] bg-white">
+                           <Link href="/pages/page1">
                             <div className="flex w-[24px] h-[24px] justify-center items-center shrink-0 rounded-full bg-[var(--bg-soft-200,#E2E4E9)]">
                                 <img src="/nav-l-icon.png" alt="" />
                             </div>
+                           </Link>
 
                         </div>
-
                     </div>
                 </aside>
             </div>
