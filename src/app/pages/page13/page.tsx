@@ -6,9 +6,9 @@ export default function Page13() {
                 className="flex flex-col justify-start items-center 
           gap-[40px] md:gap-[30px] lg:gap-[32px]
           pt-[100px] md:pt-[40px] lg:pt-[100px]
-          pr-[16px] md:pr-[48px] lg:pr-[336px]
+          pr-[16px] md:pr-[48px] lg:pr-[329px]
           pb-[20px]
-          pl-[16px] md:pl-[48px] lg:pl-[336px]
+          pl-[16px] md:pl-[48px] lg:pl-[329px]
           h-min-screen  w-full rounded-[12px] border border-[#E2E4E9] bg-white overflow-hidden"
             >
                 {/* upper content */}
