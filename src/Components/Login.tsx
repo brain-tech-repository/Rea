@@ -31,7 +31,7 @@ const Login = () => {
        
           <div className="space-y-1">
             <label className="block text-sm font-medium text-[#0A0D14] tracking-[-0.006em] font-inter">
-              Email Address
+              Email Address 
             </label>
             <input
               type="email"
