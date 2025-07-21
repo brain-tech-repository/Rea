@@ -1,20 +1,23 @@
+import Home1 from "./pages/page1/page";
+
 export default function Home() {
   return (
     <>
 
-        <div
-          className="flex flex-col justify-center items-center 
+<Home1/>
+        {/* <div */}
+          {/* className="flex flex-col justify-center items-center 
           gap-[40px] md:gap-[30px] lg:gap-[32px]
           pt-[100px] md:pt-[40px] lg:pt-[50px]
           pr-[16px] md:pr-[48px] lg:pr-[336px]
           pb-[20px]
           pl-[16px] md:pl-[48px] lg:pl-[336px]
-          h-full w-full rounded-[12px] border border-[#E2E4E9] bg-white overflow-hidden"
-        >
+          h-full w-full rounded-[12px] border border-[#E2E4E9] bg-white overflow-hidden" */}
+        {/* > */}
           {/* upper content */}
-          <div className="flex flex-row justify-between items-center w-full px-4 md:px-6">
+          {/* <div className="flex flex-row justify-between items-center w-full px-4 md:px-6"> */}
             {/* items1 */}
-            <div className="flex flex-col items-start gap-1">
+            {/* <div className="flex flex-col items-start gap-1">
               <h3 className="text-[#0A0D14] font-[Inter Display] text-[24px] md:text-[28px] lg:text-[32px] font-medium leading-[32px] md:leading-[36px] lg:leading-[40px]">
                 Hello! 👋
                 <br />
@@ -23,10 +26,10 @@ export default function Home() {
               <p className="text-[#868C98] text-center font-inter text-[14px] md:text-[16px] font-normal leading-[22px] md:leading-[24px] tracking-[-0.176px]">
                 What can i help you with today?
               </p>
-            </div>
+            </div> */}
 
             {/* items2 */}
-            <div
+            {/* <div
               className="flex justify-center items-center 
             w-[64px] md:w-[80px] lg:w-[108px] 
             h-[64px] md:h-[80px] lg:h-[108px] 
@@ -41,12 +44,12 @@ export default function Home() {
             </div>
 
             </div>
-          </div>
+          </div> */}
 
           {/* lower content */}
-          <div className="flex flex-col items-start gap-[6px] h-[216px] p-[4px] self-stretch rounded-[28px] bg-[#FEF3EB]">
+          {/* <div className="flex flex-col items-start gap-[6px] h-[216px] p-[4px] self-stretch rounded-[28px] bg-[#FEF3EB]"> */}
             {/* items 1 */}
-            <div className="flex items-center p-[16px] gap-[4px] self-stretch rounded-[24px] border border-[#E2E4E9] bg-[#FFF]">
+            {/* <div className="flex items-center p-[16px] gap-[4px] self-stretch rounded-[24px] border border-[#E2E4E9] bg-[#FFF]">
               <div className="flex flex-col justify-center items-start gap-1 flex-[1_0_0]">
                 <div className="flex h-[80px] items-start gap-[12px] self-stretch">
                   <p className="text-[#868C98] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px]">
@@ -67,9 +70,9 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* items2 */}
-            <div className="flex justify-between items-center self-stretch px-1 ">
+            {/* <div className="flex justify-between items-center self-stretch px-1 ">
 
               <div className="flex p-[10px] justify-center items-center  rounded-[24px] bg-[#FFDAC2] ">
 
@@ -87,10 +90,12 @@ export default function Home() {
                   Upgrade
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
+            </div> */}
+          {/* </div>
+        </div> */}
 
+    {/* </Ho> */}
+    
     </>
   );
 }

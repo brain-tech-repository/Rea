@@ -37,7 +37,7 @@ const CheckEmail = () => {
 
           {/* Top Section */}
           <div className="space-y-4 text-center">
-            <p className="text-[32px] leading-[40px] font-medium tracking-[0] font-['Inter_Display']">
+            <p className="text-[32px] leading-[40px] font-medium tracking-[0] font-inter">
               Check your email
             </p>
             <p className="text-[14px] leading-[20px] font-normal tracking-[-0.006em] font-['Inter'] px-4">

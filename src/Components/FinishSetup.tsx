@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Link from 'next/link';
 const FinishSetup = () => {
   return (
     <>
@@ -14,10 +14,10 @@ const FinishSetup = () => {
         <div className="w-full max-w-[296px] mx-auto flex flex-col gap-[32px]">
           {/* Heading + Description */}
           <div className="flex flex-col gap-2 text-center">
-            <p className="font-medium text-[32px] leading-[40px] tracking-[0em] text-[#0A0D14] font-['Inter_Display']">
+            <p className="font-medium text-[32px] leading-[40px] tracking-[0em] text-[#0A0D14] font-inter">
               Finish setup
             </p>
-            <p className="font-normal text-[14px] leading-[20px] tracking-[-0.006em] text-[#525866] font-['Inter'] px-6">
+            <p className="font-normal text-[14px] leading-[20px] tracking-[-0.006em] text-[#525866] font-inter px-6">
               Complete your account setup to start enjoying your benefits.
             </p>
           </div>
@@ -37,7 +37,7 @@ const FinishSetup = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               {/* First Name */}
               <div className="flex flex-col gap-px w-full">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className=" text-[14px] font-medium text-[#0A0D14] block text-sm tracking-[-0.006em] font-inter" >
                   First name
                 </label>
                 <input
@@ -48,7 +48,8 @@ const FinishSetup = () => {
 
               {/* Last Name */}
               <div className="flex flex-col gap-px w-full">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className=" text-[14px] font-medium text-[#0A0D14] block text-sm tracking-[-0.006em] font-inter">
+                  
                   Last name
                 </label>
                 <input
@@ -60,7 +61,7 @@ const FinishSetup = () => {
 
             {/* Password Input */}
             <div className="flex flex-col gap-px w-full">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className=" text-[14px] font-medium text-[#0A0D14] block text-sm tracking-[-0.006em] font-inter">
                 Password
               </label>
               <input
@@ -72,12 +73,17 @@ const FinishSetup = () => {
 
           {/* Buttons */}
           <div className="flex flex-col gap-2">
-            <button className="h-10 px-6 w-full gap-1 rounded-[10px] bg-black text-white text-sm font-medium hover:bg-gray-800 transition">
+            <button className=" px-6 text-sm  hover:bg-gray-800 transition
+                    w-full h-[40px]  text-[14px] font-medium rounded-[10px] flex items-center justify-center gap-2 
+    bg-[#20232D] text-[#FFFFFF] tracking-[-0.006em]  font-inter
+            ">
               Start getting answers
             </button>
+          <Link href="www.google.com">
             <button className="bg-transparent text-gray-700 hover:bg-gray-100 border border-transparent w-full h-[40px] gap-1 rounded-[10px] pt-[10px] pr-[20px] pb-[10px] pl-[20px]">
               Back to sign up
             </button>
+          </Link>
           </div>
         </div>
       </div>
