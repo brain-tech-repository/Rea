@@ -15,10 +15,10 @@ const CreateAccount = () => {
 
                     {/* Top Section */}
                     <div className="space-y-4">
-                        <p className="text-[28px] sm:text-[32px] leading-[40px] text-center font-['Inter_Display'] font-medium">
+                        <p className="text-[28px] sm:text-[32px] leading-[40px] text-center font-inter font-medium text-[#0A0D14]">
                             Create account
                         </p>
-                        <p className="text-[14px] leading-[20px] text-[#525866] text-center font-['Inter']">
+                        <p className="text-[14px] leading-[20px] text-[#525866] text-center font-inter tracking-[-0.006em]">
                             Thank you for signing up. To start enjoying the benefits, let's set up your account.
                         </p>
                     </div>
@@ -27,7 +27,7 @@ const CreateAccount = () => {
                     <div className="mt-8 space-y-6">
                         {/* Email Field */}
                         <div className="space-y-2">
-                            <label className="text-[14px] font-medium text-[#333] block font-['Inter']">
+                            <label className="text-[14px] font-medium text-[#0A0D14] block font-inter">
                                 Email Address
                             </label>
                             <input
@@ -41,18 +41,24 @@ const CreateAccount = () => {
                         <div className="space-y-4">
                             {/* Proceed Button */}
                             <Link href="#">
-                                <button className="w-full h-[40px] bg-black text-white text-[14px] font-medium rounded-[10px] flex items-center justify-center gap-2 font-['Inter']">
+                                <button className="w-full h-[40px]  text-[14px] font-medium rounded-[10px] flex items-center justify-center gap-2 font-inter
+                                   
+    bg-[#20232D] text-[#FFFFFF] tracking-[-0.006em]  font-inter
+                                ">
                                     Proceed
                                 </button>
                             </Link>
 
                             {/* Google Sign Up */}
+                            <Link href="/login">
                             <div className="w-full h-[40px] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-4">
                                 <img src="/google.png" alt="Google" className="w-5 h-5" />
-                                <p className="text-[14px] leading-[20px] tracking-[-0.006em] font-medium font-['Inter']">
+
+                                <p className="text-[14px] leading-[20px] tracking-[-0.006em] font-medium font-inter">
                                     Sign up with Google
                                 </p>
                             </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

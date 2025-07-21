@@ -1,5 +1,6 @@
 // Home.tsx
-export default function Home() {
+import Link from "next/link";
+export default function Home1() {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full bg-gradient-to-b from-[#fef7ec] to-[#fef3eb] rounded-xl">
       {/* Centered circular content */}
@@ -19,9 +20,12 @@ export default function Home() {
 
       {/* Buttons */}
       <div className="mt-8">
+        <Link href="/ac">
         <button className="w-48 h-10 bg-[#20232d] text-white rounded">
           Create account
         </button>
+        </Link>
+        
       </div>
       <div className="mt-2">
         <button className="w-48 h-10 bg-gradient-to-b from-[#fef7ec] to-[#fef3eb] text-black font-light rounded">
