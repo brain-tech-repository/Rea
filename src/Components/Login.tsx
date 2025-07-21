@@ -17,10 +17,10 @@ const Login = () => {
 
       
         <div className="space-y-4 text-center">
-          <h1 className="text-2xl sm:text-3xl font-bold font-medium font-['Inter_Display'] leading-snug">
+          <h1 className="text-2xl sm:text-3xl font-medium font-inter leading-snug text-[#0A0D14]">
             Log in to your<br /> account
           </h1>
-          <p className="text-md text-gray-600">
+          <p className="text-md text-gray-600  tracking-[-0.006em]">
             Enter your credentials to continue
           </p>
         </div>
