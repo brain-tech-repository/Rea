@@ -1,16 +1,22 @@
+"use client";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function navbar() {
+      const pathname = usePathname();
     return (
         <>
             <div className="container-fluid ">
                 <aside className="flex flex-col items-center w-16 h-screen py-3 overflow-y-auto  ">
                     <nav className="flex flex-col flex-1 space-y-6">
+                       <Link href="/pages/page1">
                         <div className="flex h-[44px] p-3 justify-center items-center gap-[10px rounded-[14px] border border-[var(--stroke-soft-200,#E2E4E9)] bg-white]">
                             <div className="text-[#1B1B08] text-center font-[Gelica] text-[24.788px] font-medium leading-[41.313px]">
                                 R
                             </div>
                         </div>
+                       </Link>
+                       <Link href="/pages/page6">
                         <div className="flex p-3 justify-center items-center gap-[10px] rounded-[16px]">
                             <div className="w-[16.667px] h-[16.667px] shrink-0" >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -21,6 +27,8 @@ export default function navbar() {
                                 </svg>
                             </div>
                         </div>
+                       </Link>
+                     <Link href="/pages/page1">
                         <div className="flex p-3 justify-center items-center gap-2.5 rounded-lg">
                             <div className="w-[15.833px] h-[15.833px] shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -30,6 +38,8 @@ export default function navbar() {
                                 </svg>
                             </div>
                         </div>
+                     </Link>
+                        <Link href="/pages/page6">
                         <div className="flex p-3 justify-center items-center gap-[10px] rounded-[16px]">
                             <div className="w-[15.833px] h-[16.667px] shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
@@ -39,6 +49,8 @@ export default function navbar() {
                                 </svg>
                             </div>
                         </div>
+                        </Link>
+                       <Link href="/pages/page13">
                         <div className="flex p-3 justify-center items-center gap-[10px] rounded-[16px]">
                             <div className="w-[15px] h-[16.667px] shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
@@ -49,8 +61,10 @@ export default function navbar() {
                                 </svg>
                             </div>
                         </div>
+                       </Link>
                     </nav>
                     <div className="flex flex-col space-y-6">
+                     <Link href="/pages/page14">
                         <div className="flex flex-col items-start gap-[10px] px-[12px] self-stretch">
                             <div className="w-[16.25px] h-[16.667px] shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
@@ -60,14 +74,15 @@ export default function navbar() {
                                 </svg>
                             </div>
                         </div>
+                     </Link>
+
+                      <Link href="/pages/page13">
                         <div className="flex w-[44px] h-[44px] p-[6px] justify-center items-center gap-[10px] rounded-[14px] border border-[var(--stroke-soft-200,#E2E4E9)] bg-white">
-                           <Link href="/pages/page1">
                             <div className="flex w-[24px] h-[24px] justify-center items-center shrink-0 rounded-full bg-[var(--bg-soft-200,#E2E4E9)]">
                                 <img src="/nav-l-icon.png" alt="" />
                             </div>
-                           </Link>
-
                         </div>
+                         </Link>
                     </div>
                 </aside>
             </div>

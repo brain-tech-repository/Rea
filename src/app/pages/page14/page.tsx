@@ -45,38 +45,47 @@ export default function ChatBox() {
     const sendMessage = () => {
         if (!input.trim()) return;
 
+        // Capture the character at the moment the message is sent
+        const currentCharacter = selectedCharacter;
+
+        // Add the user's outgoing message
         setMessages((prev) => [...prev, { text: input, type: 'outgoing' }]);
         setInput('');
         setShowVoiceIcon(true);
         setIsLoading(true);
 
+        // Simulate a bot response
         setTimeout(() => {
             setMessages((prev) => [
                 ...prev,
-                { text: "I'm just a bot!", type: 'incoming' },
+                {
+                    text: `This is a simulated response from ${currentCharacter.name}.`,
+                    type: 'incoming',
+                    // Associate the character with the incoming message
+                    character: currentCharacter,
+                },
             ]);
             setIsLoading(false);
-        }, 1000);
+        }, 1500);
     };
-
     return (
         <div className="relative flex flex-col w-full h-full px-4 py-6 bg-white">
             {/* Header */}
-         <div className='mb-4'>
-               <div className="absolute top-4 left-4 flex items-center gap-2">
-                <div className="text-[#0A0D14] text-sm md:text-base font-semilight">
-                    Summarized question as header here
+            <div className='mb-4'>
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                    <div className="text-[#0A0D14] text-sm md:text-base font-semilight">
+                        Summarized question as header here
+                    </div>
+                </div>
+
+                <div className="absolute top-4 right-4 flex items-center gap-1 text-[#868C98] cursor-pointer hover:opacity-80 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M6.4005 1.00134C3.96791 1.00572 2.69407 1.06544 1.87999 1.8795C1.00146 2.758 1.00146 4.17193 1.00146 6.99976C1.00146 9.82764 1.00146 11.2416 1.87999 12.12C2.75851 12.9986 4.17249 12.9986 7.00044 12.9986C9.82834 12.9986 11.2423 12.9986 12.1209 12.12C12.9349 11.306 12.9946 10.0322 12.999 7.59969" stroke="#868C98" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M12.6536 1.34505L8.9541 5.03438M12.6536 1.34505C12.3243 1.01538 10.1059 1.0461 9.63689 1.05278M12.6536 1.34505C12.9829 1.67472 12.9522 3.89557 12.9455 4.36507" stroke="#868C98" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className="text-sm font-medium">Share</span>
                 </div>
             </div>
-
-            <div className="absolute top-4 right-4 flex items-center gap-1 text-[#868C98] cursor-pointer hover:opacity-80 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M6.4005 1.00134C3.96791 1.00572 2.69407 1.06544 1.87999 1.8795C1.00146 2.758 1.00146 4.17193 1.00146 6.99976C1.00146 9.82764 1.00146 11.2416 1.87999 12.12C2.75851 12.9986 4.17249 12.9986 7.00044 12.9986C9.82834 12.9986 11.2423 12.9986 12.1209 12.12C12.9349 11.306 12.9946 10.0322 12.999 7.59969" stroke="#868C98" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M12.6536 1.34505L8.9541 5.03438M12.6536 1.34505C12.3243 1.01538 10.1059 1.0461 9.63689 1.05278M12.6536 1.34505C12.9829 1.67472 12.9522 3.89557 12.9455 4.36507" stroke="#868C98" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className="text-sm font-medium">Share</span>
-            </div>
-         </div>
 
             {/* Main Area */}
             <div className={`flex flex-col w-full max-w-3xl mx-auto transition-all duration-300 ${isInputFocused || hideGreeting ? 'justify-between h-full' : 'justify-center flex-1 '}`}>
@@ -100,16 +109,21 @@ export default function ChatBox() {
 
                 <div className={`flex-1 overflow-y-auto mt-6 mb-4 px-2 space-y-4 ${isInputFocused || hideGreeting ? 'block' : 'hidden'}`}>
                     {messages.map((msg, i) => (
-                        <div key={i} className={`max-w-[75%] flex gap-2 ${msg.type === 'incoming' ? 'self-start' : 'self-end ml-auto'}`}>
+                        <div key={i} className={`max-w-[75%] w-fit flex gap-2 items-start ${msg.type === 'incoming' ? '' : 'self-end ml-auto'}`}>
                             {msg.type === 'incoming' && (
-                                <div className="w-6 h-6 mt-1 rounded-full overflow-hidden">
-                                    <img src="/rea.png" alt="Bot avatar" className="w-full h-full object-cover" />
+                                <div className="w-6 h-6 mt-1 rounded-full overflow-hidden flex-shrink-0">
+                                    {/* UPDATED: Use the image from the message object itself */}
+                                    <img
+                                        src={msg.character?.img || 'https://placehold.co/24x24/E2E4E9/0A0D14?text=?'}
+                                        alt={msg.character?.name || 'Bot avatar'}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
                             )}
-                            <div className={`px-4 py-3 rounded-2xl text-sm ${msg.type === 'incoming' ? 'bg-transparent text-[#0A0D14]' : 'bg-[#F6F8FA] text-gray-900'}`}>{msg.text}</div>
+
+                            <div className={`px-4 py-3 rounded-2xl text-sm ${msg.type === 'incoming' ? 'bg-[#F6F8FA] text-[#0A0D14]' : 'bg-orange-500 text-white'}`}>{msg.text}</div>
                         </div>
                     ))}
-
                     {isLoading && (
                         <div className="max-w-[75%] flex gap-2 self-start">
                             <div className="w-6 h-6 mt-1 rounded-full overflow-hidden">
