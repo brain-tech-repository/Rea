@@ -48,16 +48,15 @@ const CreateAccount = () => {
                                     Proceed
                                 </button>
                             </Link>
-
                             {/* Google Sign Up */}
-                            <Link href="/login">
-                            <div className="w-full h-[40px] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-4">
-                                <img src="/google.png" alt="Google" className="w-5 h-5" />
+                            <Link href="">
+                                <div className="w-full h-[40px] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-4">
+                                    <img src="/google.png" alt="Google" className="w-5 h-5" />
 
-                                <p className="text-[14px] leading-[20px] tracking-[-0.006em] font-medium font-inter">
-                                    Sign up with Google
-                                </p>
-                            </div>
+                                    <p className="text-[14px] leading-[20px] tracking-[-0.006em] font-medium font-inter">
+                                        Sign up with Google
+                                    </p>
+                                </div>
                             </Link>
                         </div>
                     </div>

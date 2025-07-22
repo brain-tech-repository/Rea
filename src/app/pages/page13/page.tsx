@@ -49,9 +49,10 @@ export default function Page13() {
                     <div className="flex items-center p-[16px] gap-[4px] self-stretch rounded-[24px] border border-[#E2E4E9] bg-[#FFF]">
                         <div className="flex flex-col justify-center items-start gap-1 flex-[1_0_0]">
                             <div className="flex h-[80px] items-start gap-[12px] self-stretch">
-                                <p className="text-[#868C98] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px]">
+                                {/* <p className="text-[#868C98] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px]">
                                     Start asking Rea those tough questions
-                                </p>
+                                </p> */}
+                                <input type="text" placeholder=" Start asking Rea those tough questions"  className="h-20 w-full border-b-2"/>
                             </div>
                             <div className="flex justify-between items-center self-stretch ">
                                 <div className="flex items-center justify-center gap-[10px] p-2 rounded-full bg-[#F6F8FA]">
@@ -134,11 +135,11 @@ export default function Page13() {
 
 
                 <div className="flex items-center self-stretch">
-                    <div className="w-[200px] h-px bg-gradient-to-r from-transparent to-[#E2E4E9]"></div>
+                    <div className="w-[150px] h-px bg-gradient-to-r from-transparent to-[#E2E4E9]"></div>
                     <p className="text-[#0A0D14] font-inter text-[18px] font-medium leading-[24px] tracking-[-0.27px]">
                         Sample questions for Paul
                     </p>
-                    <div className="w-[200px] h-px bg-gradient-to-r from-transparent to-[#E2E4E9]">     </div>
+                    <div className="w-[150px] h-px bg-gradient-to-r from-transparent to-[#E2E4E9]">     </div>
                 </div>
 
 
@@ -152,7 +153,7 @@ export default function Page13() {
                                 <path d="M8.00107 8H8.00707M5.3374 8H5.34338" stroke="#868C98" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <p className="text-[#525866] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
+                        <p className="text-[#525866] font-inter text-[11px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
                             What advice would you give to believers today about resolving conflicts in the church?
                         </p>
                     </div>
@@ -166,7 +167,7 @@ export default function Page13() {
                                 <path d="M8.00107 8H8.00707M5.3374 8H5.34338" stroke="#868C98" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <p className="text-[#525866] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
+                        <p className="text-[#525866] font-inter text-[11px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
                             What advice would you give to believers today about resolving conflicts in the church?
                         </p>
                     </div>
@@ -180,7 +181,7 @@ export default function Page13() {
                                 <path d="M8.00107 8H8.00707M5.3374 8H5.34338" stroke="#868C98" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <p className="text-[#525866] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
+                        <p className="text-[#525866] font-inter text-[11px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
                             What advice would you give to believers today about resolving conflicts in the church?
                         </p>
                     </div>
@@ -194,7 +195,7 @@ export default function Page13() {
                                 <path d="M8.00107 8H8.00707M5.3374 8H5.34338" stroke="#868C98" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <p className="text-[#525866] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
+                        <p className="text-[#525866] font-inter text-[11px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
                             What advice would you give to believers today about resolving conflicts in the church?
                         </p>
                     </div>
@@ -208,7 +209,7 @@ export default function Page13() {
                                 <path d="M8.00107 8H8.00707M5.3374 8H5.34338" stroke="#868C98" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <p className="text-[#525866] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
+                        <p className="text-[#525866] font-inter text-[11px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
                             What advice would you give to believers today about resolving conflicts in the church?
                         </p>
                     </div>
@@ -222,7 +223,7 @@ export default function Page13() {
                                 <path d="M8.00107 8H8.00707M5.3374 8H5.34338" stroke="#868C98" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <p className="text-[#525866] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
+                        <p className="text-[#525866] font-inter text-[11px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
                             What advice would you give to believers today about resolving conflicts in the church?
                         </p>
                     </div>
@@ -236,7 +237,7 @@ export default function Page13() {
                                 <path d="M8.00107 8H8.00707M5.3374 8H5.34338" stroke="#868C98" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <p className="text-[#525866] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
+                        <p className="text-[#525866] font-inter text-[11px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
                             What advice would you give to believers today about resolving conflicts in the church?
                         </p>
                     </div>
@@ -250,19 +251,11 @@ export default function Page13() {
                                 <path d="M8.00107 8H8.00707M5.3374 8H5.34338" stroke="#868C98" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <p className="text-[#525866] font-inter text-[14px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
+                        <p className="text-[#525866] font-inter text-[11px] font-normal leading-[20px] tracking-[-0.084px] responsive-text">
                             What advice would you give to believers today about resolving conflicts in the church?
                         </p>
                     </div>
                 </div>
-                
-
-              
-
-
-
-
-
             </div>
         </>
     );

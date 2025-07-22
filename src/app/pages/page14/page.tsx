@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { ReactMic } from 'react-mic';
 import {
     SendHorizonal,
     Mic,
@@ -25,6 +26,8 @@ export default function ChatBox() {
     const [showTooltip, setShowTooltip] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const messagesEndRef = useRef(null);
+    const [isRecording, setIsRecording] = useState(false);
+    const [recordTime, setRecordTime] = useState(0);
     const [selectedCharacter, setSelectedCharacter] = useState({
         name: 'Rea',
         img: '/rea.png',
@@ -35,6 +38,29 @@ export default function ChatBox() {
             setHideGreeting(true);
         }
     }, [messages]);
+
+    useEffect(() => {
+        if (isRecording) {
+            const timeout = setTimeout(() => {
+                setIsRecording(false);
+            }, 5000); // auto-stop after 5 seconds
+            return () => clearTimeout(timeout);
+        }
+    }, [isRecording]);
+
+    useEffect(() => {
+        let timer;
+        if (isRecording) {
+            setRecordTime(0);
+            timer = setInterval(() => {
+                setRecordTime(prev => prev + 1);
+            }, 1000);
+        } else {
+            clearInterval(timer);
+        }
+        return () => clearInterval(timer);
+    }, [isRecording]);
+
 
     useEffect(() => {
         if (messagesEndRef.current) {
@@ -78,13 +104,30 @@ export default function ChatBox() {
                     </div>
                 </div>
 
-                <div className="absolute top-4 right-4 flex items-center gap-1 text-[#868C98] cursor-pointer hover:opacity-80 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M6.4005 1.00134C3.96791 1.00572 2.69407 1.06544 1.87999 1.8795C1.00146 2.758 1.00146 4.17193 1.00146 6.99976C1.00146 9.82764 1.00146 11.2416 1.87999 12.12C2.75851 12.9986 4.17249 12.9986 7.00044 12.9986C9.82834 12.9986 11.2423 12.9986 12.1209 12.12C12.9349 11.306 12.9946 10.0322 12.999 7.59969" stroke="#868C98" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M12.6536 1.34505L8.9541 5.03438M12.6536 1.34505C12.3243 1.01538 10.1059 1.0461 9.63689 1.05278M12.6536 1.34505C12.9829 1.67472 12.9522 3.89557 12.9455 4.36507" stroke="#868C98" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="text-sm font-medium">Share</span>
+                <div className="absolute top-4 right-4 flex items-center gap-6">
+                    {/* New Chat Button */}
+                    <button
+                        onClick={() => {
+                            setMessages([]);
+                            setHideGreeting(false);
+                            setInput('');
+                            setShowVoiceIcon(false);
+                            setIsLoading(false);
+                        }}
+                        className="flex justify-center items-center gap-[2px] px-[12px] py-[6px] rounded-[8px] bg-[#20232D] text-white text-center font-inter text-[14px] font-medium leading-[20px] tracking-[-0.084px] shadow-[0px_1px_2px_rgba(82,88,102,0.06)] hover:opacity-80 transition"
+                    >
+                        New Chat
+                    </button>
+                    {/* Share Button */}
+                    <div className="flex items-center gap-1 text-[#868C98] cursor-pointer hover:opacity-80 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M6.4005 1.00134C3.96791 1.00572 2.69407 1.06544 1.87999 1.8795C1.00146 2.758 1.00146 4.17193 1.00146 6.99976C1.00146 9.82764 1.00146 11.2416 1.87999 12.12C2.75851 12.9986 4.17249 12.9986 7.00044 12.9986C9.82834 12.9986 11.2423 12.9986 12.1209 12.12C12.9349 11.306 12.9946 10.0322 12.999 7.59969" stroke="#868C98" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M12.6536 1.34505L8.9541 5.03438M12.6536 1.34505C12.3243 1.01538 10.1059 1.0461 9.63689 1.05278M12.6536 1.34505C12.9829 1.67472 12.9522 3.89557 12.9455 4.36507" stroke="#868C98" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span className="text-sm font-medium">Share</span>
+                    </div>
                 </div>
+
             </div>
 
             {/* Main Area */}
@@ -121,7 +164,7 @@ export default function ChatBox() {
                                 </div>
                             )}
 
-                            <div className={`px-4 py-3 rounded-2xl text-sm ${msg.type === 'incoming' ? 'bg-[#F6F8FA] text-[#0A0D14]' : 'bg-orange-500 text-white'}`}>{msg.text}</div>
+                            <div className={`px-4 py-3 rounded-2xl text-sm ${msg.type === 'incoming' ? 'bg-[#FEF3EB] text-black' : 'bg-[#F6F8FA] text-[#0A0D14]'}`}>{msg.text}</div>
                         </div>
                     ))}
                     {isLoading && (
@@ -167,6 +210,35 @@ export default function ChatBox() {
                             </div>
                         )}
 
+                        {isRecording && (
+                            <div className="flex items-center gap-3 mb-2">
+                                {/* Mic icon and timer */}
+                                <div className="flex items-center gap-2 text-sm text-orange-600 min-w-[60px]">
+                                    <Mic className="w-4 h-4" />
+                                    <span>{recordTime}s</span>
+                                </div>
+
+                                {/* ReactMic waveform */}
+                                <div className="flex-1">
+                                    <ReactMic
+                                        record={isRecording}
+                                        className="w-full rounded-md  max-w-[600px] mx-auto h-[50px] "
+                                        onStop={(recordedData) => {
+                                            console.log('Audio blob:', recordedData);
+                                            // You can handle transcription here
+                                        }}
+                                        strokeColor="#FF8000"
+                                        backgroundColor="#FFF3E0"
+                                    />
+                                </div>
+
+                                {/* Stop & Send buttons */}
+
+                            </div>
+                        )}
+
+
+
                         <textarea
                             placeholder="Type your message..."
                             className="w-full h-[70px] pl-2 pt-1 outline-none text-sm rounded-2xl resize-none placeholder:text-gray-400"
@@ -181,11 +253,72 @@ export default function ChatBox() {
                             onBlur={() => setIsInputFocused(false)}
                             onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage()}
                         />
+
+
                     </div>
 
-                    <button onClick={sendMessage} className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full">
-                        {showVoiceIcon ? <Mic size={20} /> : <ArrowUp size={20} />}
-                    </button>
+                    <div className="flex items-center gap-2">
+                        {isRecording ? (
+                            <>
+                                {/* Cancel button */}
+                                <button
+                                    onClick={() => setIsRecording(false)}
+                                    className="bg-orange-100 hover:bg-orange-200 text-orange-600 p-3 rounded-full flex items-center justify-center"
+                                >
+                                    <X className="w-4 h-4" />
+                                </button>
+
+                                {/* Send button */}
+                                <button
+                                    onClick={() => {
+                                        setIsRecording(false);
+                                        const voiceMessage = {
+                                            text: `▶  ━━━━━━   ${recordTime}s`,
+                                            type: 'outgoing',
+                                        };
+                                        setMessages(prev => [...prev, voiceMessage]);
+                                        setIsLoading(true);
+
+                                        // Simulate bot response after sending voice
+                                        setTimeout(() => {
+                                            setMessages(prev => [
+                                                ...prev,
+                                                {
+                                                    text: `▶ ━━━━━   ${recordTime}s`,
+                                                    type: 'incoming',
+                                                    character: selectedCharacter,
+                                                },
+                                            ]);
+                                            setIsLoading(false);
+                                        }, 1500);
+                                    }}
+                                    className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full flex items-center justify-center"
+                                >
+                                    <ArrowUp className="w-4 h-4" />
+                                </button>
+                            </>
+                        ) : (
+                            <button
+                                onClick={() => {
+                                    if (showVoiceIcon) {
+                                        setIsRecording(true);
+                                        setHideGreeting(true);
+                                        setShowTooltip(false);
+
+                                    } else {
+
+                                        sendMessage();
+                                    }
+                                }}
+                                className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full flex items-center justify-center"
+                            >
+                                {showVoiceIcon ? <Mic size={20} /> : <ArrowUp size={20} />}
+                            </button>
+                        )}
+                    </div>
+
+
+
                 </div>
             </div>
 
