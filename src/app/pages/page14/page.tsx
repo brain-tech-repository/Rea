@@ -2,8 +2,11 @@
 import { useEffect, useRef } from "react";
 import React, { useState } from "react";
 import SampleQuestions from "../../components/SampleQuestions";
-import { ReactMic } from "react-mic";
-import { ReactMediaRecorder } from "react-media-recorder";
+import dynamic from "next/dynamic";
+const ReactMediaRecorder = dynamic(
+  () => import("react-media-recorder").then(mod => mod.ReactMediaRecorder),
+  { ssr: false }
+);
 
 import {
 
@@ -18,6 +21,9 @@ import {
 } from "lucide-react";
 
 export default function Page14() {
+
+
+
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -103,6 +109,8 @@ export default function Page14() {
         setRecordTime(prev => prev + 1);
       }, 1000);
     }
+
+    
 
     return () => {
       clearInterval(timer);
@@ -203,8 +211,8 @@ export default function Page14() {
       {/* Main Area */}
       <div
         className={`flex flex-col w-full max-w-3xl mx-auto transition-all duration-300 ${(isInputFocused || hideGreeting) && !isSamplesVisible
-            ? " flex-1 justify-between h-full"
-            : "justify-center flex-1 "
+          ? " flex-1 justify-between h-full"
+          : "justify-center flex-1 "
           }`}
       >
         {!hideGreeting && (
@@ -258,8 +266,8 @@ export default function Page14() {
               )}
               <div
                 className={`px-4 py-3 rounded-2xl text-sm ${msg.type === "incoming"
-                    ? "bg-[#FEF3EB] text-black"
-                    : "bg-[#F6F8FA] text-[#0A0D14]"
+                  ? "bg-[#FEF3EB] text-black"
+                  : "bg-[#F6F8FA] text-[#0A0D14]"
                   }`}
               >
                 {msg.text}
@@ -345,14 +353,27 @@ export default function Page14() {
                   {/* ReactMic waveform */}
                   <div className="flex-1">
                     <ReactMediaRecorder
-                      record={isRecording}
-                      className="w-full rounded-md  max-w-[600px] mx-auto h-[50px] "
-                      onStop={(recordedData) => {
-                        console.log("Audio blob:", recordedData);
-                        // You can handle transcription here
-                      }}
-                      strokeColor="#FF8000"
-                      backgroundColor="#FFF3E0"
+                      audio
+                      render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
+                        <div className="w-full rounded-md max-w-[600px] mx-auto h-[50px]">
+                          <p>{status}</p>
+                          <button
+                            onClick={startRecording}
+                            className="px-4 py-2 bg-green-500 text-white rounded mr-2"
+                          >
+                            Start Recording
+                          </button>
+                          <button
+                            onClick={stopRecording}
+                            className="px-4 py-2 bg-red-500 text-white rounded"
+                          >
+                            Stop Recording
+                          </button>
+                          {mediaBlobUrl && (
+                            <audio src={mediaBlobUrl} controls className="mt-2 w-full" />
+                          )}
+                        </div>
+                      )}
                     />
                   </div>
 
@@ -585,14 +606,14 @@ export default function Page14() {
                       <div
                         key={name}
                         className={`flex items-center p-2 px-4 rounded-full transition-colors duration-300 ${index === 0
-                            ? "bg-[#FEF3EB]"
-                            : "bg-[#F6F8FA] hover:bg-gray-200"
+                          ? "bg-[#FEF3EB]"
+                          : "bg-[#F6F8FA] hover:bg-gray-200"
                           }`}
                       >
                         <p
                           className={`text-sm leading-5 tracking-tight font-inter ${index === 0
-                              ? "text-[#C2540A] font-medium"
-                              : "text-[#525866] font-normal"
+                            ? "text-[#C2540A] font-medium"
+                            : "text-[#525866] font-normal"
                             }`}
                         >
                           {name}
