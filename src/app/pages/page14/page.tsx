@@ -15,12 +15,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-
-
-
-
-
-export default function ChatBox() {
+export default function Page14() {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
