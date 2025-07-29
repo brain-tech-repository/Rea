@@ -1,4 +1,4 @@
-export default function () {
+export default function page6() {
   return (
     <div className="flex justify-center items-center h-full w-full bg-[#E2E4E9] px-4">
       <div className="bg-white w-full max-w-[1000px] rounded-[20px] overflow-hidden flex flex-col md:flex-row">
