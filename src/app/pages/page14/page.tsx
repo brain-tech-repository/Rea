@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import React, { useState } from "react";
 import SampleQuestions from "../../components/SampleQuestions";
 import { ReactMic } from "react-mic";
+import { ReactMediaRecorder } from "react-media-recorder";
 
 import {
 
@@ -12,6 +13,7 @@ import {
   ArrowUp,
   User,
   X,
+
   ArrowRight,
 } from "lucide-react";
 
@@ -342,7 +344,7 @@ export default function Page14() {
 
                   {/* ReactMic waveform */}
                   <div className="flex-1">
-                    <ReactMic
+                    <ReactMediaRecorder
                       record={isRecording}
                       className="w-full rounded-md  max-w-[600px] mx-auto h-[50px] "
                       onStop={(recordedData) => {
