@@ -7,13 +7,49 @@ import { PiBellSimpleDuotone } from "react-icons/pi";
 import { TbCopy } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
+import { useState } from 'react';
+import General from '@/Components/General';
+import Notifications from '@/Components/Notifications';
+import Security from '@/Components/Security';
 
+import DataControl from '@/Components/DataControl';
+
+// import { IoChatbubbleEllipsesOutline, IoLayersOutline, IoSettingsOutline } from "react-icons/io5";
+// import { LuSquareUser } from "react-icons/lu";
+// import { FiBell } from "react-icons/fi";
+// import { FaRegUserCircle } from "react-icons/fa";
+import { LuCircleUserRound } from "react-icons/lu";
+import { AiOutlineSecurityScan } from "react-icons/ai";
+import { IoNotificationsOutline } from "react-icons/io5";
+import { GoDatabase } from "react-icons/go";
+import Account from '@/Components/Account';
 
 export default function Navbar() { // Changed function name to Navbar for consistency
     const pathname = usePathname();
+    
 
     // Helper function to determine if a link is active
     const isActive = (href) => pathname === href;
+    const [showModal, setShowModal] = useState(false);
+    const [activeTab, setActiveTab] = useState("account");
+
+const renderContent = () => {
+    switch (activeTab) {
+      case "account":
+        return <Account />;
+      case "general":
+        return <General />;
+      case "notifications":
+        return <Notifications />;
+       case "DataControl":
+        return <DataControl />;
+      case "Security":
+        return <Security />;
+      default:
+        return <Account />;
+    }
+  };
+
 
     return (
         <>
@@ -62,7 +98,7 @@ export default function Navbar() { // Changed function name to Navbar for consis
                         {/* Settings Icon Link */}
                        <Link href="/setting">
                          <div className={`flex flex-col items-start gap-[10px] px-[12px] self-stretch`}>
-                             <IoSettingsOutline className={`h-6 w-6 ${isActive('/setting') ? 'text-orange-500' : 'text-gray-600'}`} />
+                             <IoSettingsOutline className={`h-6 w-6 ${isActive('/setting') ? 'text-orange-500' : 'text-gray-600'}`}    onClick={() => setShowModal(true)}/>
                          </div>
                        </Link>
 
@@ -77,6 +113,80 @@ export default function Navbar() { // Changed function name to Navbar for consis
                     </div>
                 </aside>
             </div>
+            {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-5xl bg-white rounded-xl border border-gray-200 shadow-md max-h-[90vh] flex flex-col overflow-hidden">
+            <button
+              className="absolute top-2 right-3 text-gray-600 hover:text-black text-2xl z-10"
+              onClick={() => setShowModal(false)}
+            >
+              &times;
+            </button>
+
+            <div className="w-full h-[60px] flex items-center justify-between px-5 py-3 border-b border-gray-200 bg-white">
+              <h2 className="font-inter font-medium text-[20px] leading-[28px] text-[#0A0D14]">Settings</h2>
+            </div>
+
+            <div className="flex flex-col md:flex-row w-full flex-1 overflow-auto">
+              <div className="w-full md:w-[200px] border-r border-gray-200 bg-white px-2 py-5 space-y-3">
+                <div
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl cursor-pointer ${activeTab === "account" ? "bg-[#F6F8FA]" : "hover:bg-gray-100"
+                    }`}
+                  onClick={() => setActiveTab("account")}
+                >
+                  <LuCircleUserRound className="h-5 w-5" />
+                  <span className="text-sm hover:bg-blue-400 hover:text-white">Account</span>
+                </div>
+                <div
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl cursor-pointer ${activeTab === "general" ? "bg-[#F6F8FA]" : "hover:bg-gray-100"
+                    }`}
+                  onClick={() => setActiveTab("general")}
+                >
+                  <IoSettingsOutline className="h-5 w-5" />
+                  <span className="text-sm font-medium text-[#868C98]">General</span>
+                </div>
+                <div
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl cursor-pointer ${activeTab === "notifications" ? "bg-[#F6F8FA]" : "hover:bg-gray-100"
+                    }`}
+                  onClick={() => setActiveTab("notifications")}
+                >
+                  <IoNotificationsOutline className="h-5 w-5" />
+                  <span className="text-sm font-medium text-[#868C98]">Notifications</span>
+                </div>
+
+
+
+ <div
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl cursor-pointer ${activeTab === "DataControl" ? "bg-[#F6F8FA]" : "hover:bg-gray-100"
+                    }`}
+                  onClick={() => setActiveTab("DataControl")}
+                >
+                     <GoDatabase className="h-5 w-5" />
+                 <span className="text-sm font-medium text-[#868C98]">Data controls</span>
+                </div>
+
+
+              
+        
+
+   <div
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl cursor-pointer ${activeTab === "Security" ? "bg-[#F6F8FA]" : "hover:bg-gray-100"
+                    }`}
+                  onClick={() => setActiveTab("Security")}
+                >
+                 
+                    <AiOutlineSecurityScan className="h-5 w-5" />
+                  <span className="text-sm font-medium text-[#868C98]">Security</span>
+                </div>
+
+
+
+              </div>
+              <div className="w-full flex-1 p-5 overflow-y-auto">{renderContent()}</div>
+            </div>
+          </div>
+        </div>
+      )}
         </>
     );
 }
