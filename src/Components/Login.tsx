@@ -57,7 +57,7 @@ const Login = () => {
 
        
         <div className="space-y-4">
-        <Link href="/char1">
+        <Link href="/pages/page6">
           <input
             type="submit"
             value="Log in"

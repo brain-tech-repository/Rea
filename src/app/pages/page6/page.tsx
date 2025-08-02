@@ -1,6 +1,14 @@
+'use client';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+
+
 export default function Page6() {
+
+   const router = useRouter();
   return (
-    <div className="min-h-screen w-full bg-[#E2E4E9] px-4 py-6 flex items-center justify-center">
+    <div className="min-h-screen w-full bg-[#E2E4E9] px-4 py-6 flex items-center justify-center  font-['Inter']">
       <div className="bg-white w-full max-w-[1000px] rounded-[20px] overflow-hidden flex flex-col md:flex-row">
         {/* Left image */}
         <div className="w-full md:w-1/2 flex justify-center items-center p-4 sm:p-6 md:p-10">
@@ -23,7 +31,7 @@ export default function Page6() {
             Go unlimited with a subscription
           </h2>
 
-          <ul className="flex flex-col gap-3 w-full max-w-[20.5rem] mt-4 text-start">
+          <ul className="flex flex-col gap-3 w-full max-w-[20.5rem] mt-4 text-start text-sm font-light leading-[20px] tracking-[-0.084px]">
             {[
               "Unlimited conversations with Rea - anytime, anywhere.",
               "Get personal insights straight from Bible characters.",
@@ -54,7 +62,11 @@ export default function Page6() {
             <button className="h-10 rounded-[10px] bg-[#20232D] text-white flex justify-center items-center">
               Go Unlimited now
             </button>
-            <button className="h-10 rounded-[10px] bg-white hover:bg-[#E2E4E9]">
+
+            <button
+              className="h-10 rounded-[10px] bg-white hover:bg-[#E2E4E9]"
+              onClick={() => router.push('/char1')}
+            >
               Continue with a free trial
             </button>
           </div>

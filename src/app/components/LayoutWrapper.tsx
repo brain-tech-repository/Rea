@@ -5,7 +5,7 @@ import Sidebar from './sidebar';
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const noSidebarPaths = ['/login', '/register', '/forgot','/ac', '/'];
+  const noSidebarPaths = ['/login', '/register', '/forgot','/ac', '/','/pages/page6'];
   const showSidebar = !noSidebarPaths.includes(pathname);
 
   return (
