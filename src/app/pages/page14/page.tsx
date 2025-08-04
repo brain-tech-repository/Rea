@@ -290,7 +290,7 @@ export default function Page14() {
               : "flex flex-col items-start gap-[6px] h-[216px] p-[4px] self-stretch rounded-[28px] bg-[#FEF3EB]"
           }
         >
-          <div className="relative w-full mt-0 border border-gray-300 rounded-2xl bg-white px-3 py-3">
+          <div className="relative w-full mt-4 border border-gray-300 rounded-2xl bg-white px-3 py-3">
             <div className="flex flex-wrap sm:flex-nowrap items-end gap-2 sm:gap-3 w-full">
               {/* Left Input Area */}
               <div className="relative flex-1 min-w-0">
