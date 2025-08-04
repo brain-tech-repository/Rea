@@ -1,9 +1,9 @@
 import React from 'react'
-import CreateAccount from '@/Components/CreateAccount'
+import Register from '@/Components/register'
 const page = () => {
   return (
     <>
-    <CreateAccount/>
+  <Register/>
     </>
   )
 }

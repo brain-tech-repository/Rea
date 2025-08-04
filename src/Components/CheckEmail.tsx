@@ -1,9 +1,9 @@
-"use client";
+"use client"
 import React, { useRef } from 'react';
 import Link from 'next/link';
 
-const CheckEmail: React.FC = () => {
-  const inputsRef = useRef<Array<HTMLInputElement | null>>([]);
+const CheckEmail = () => {
+  const inputsRef = useRef<HTMLInputElement[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const value = e.target.value;
@@ -40,7 +40,7 @@ const CheckEmail: React.FC = () => {
             <p className="text-[32px] leading-[40px] font-medium tracking-[0] font-inter">
               Check your email
             </p>
-            <p className="text-[14px] leading-[20px] font-normal tracking-[-0.006em] font-['Inter'] px-4">
+            <p className="text-[14px] leading-[20px] font-normal tracking-[-0.006em] text-[#525866] font-inter px-4">
               Check your inbox for a 6-digit passcode to verify your email.
             </p>
           </div>
@@ -55,9 +55,7 @@ const CheckEmail: React.FC = () => {
                   maxLength={1}
                   inputMode="numeric"
                   className="w-[41px] h-[40px] text-center border border-[#E2E4E9] rounded-[8px] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  ref={(el) => {
-                    inputsRef.current[index] = el;
-                  }}
+                  ref={(el) => { if (el) inputsRef.current[index] = el }}
                   onChange={(e) => handleChange(e, index)}
                 />
               ))}
@@ -65,15 +63,17 @@ const CheckEmail: React.FC = () => {
 
             {/* Action Buttons */}
             <div className="space-y-4">
-              <Link href="#">
+              <Link href="/login">
                 <button className="w-full h-[40px] bg-black text-white text-[14px] font-medium rounded-[10px] hover:bg-gray-800 transition">
                   Proceed
                 </button>
               </Link>
 
+             <Link href="/register">
               <button className="w-full h-[40px] text-sm font-medium text-gray-700 bg-transparent hover:bg-gray-100 border border-transparent rounded-[10px]">
                 Go back
               </button>
+             </Link>
             </div>
           </div>
         </div>

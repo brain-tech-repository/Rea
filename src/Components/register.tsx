@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const CreateAccount = () => {
+const Register = () => {
   return (
     <>
       {/* Background image — only visible on larger screens */}
@@ -17,17 +17,16 @@ const CreateAccount = () => {
       <div className="w-full min-h-screen flex items-center justify-center bg-gray-100 px-4 py-10">
         <div className="w-full max-w-[376px] bg-white/90 border border-[#E2E4E9] rounded-[24px] backdrop-blur-[24px] shadow-lg p-6 sm:p-8 z-10">
           {/* Top Section */}
-        
-            <div className="space-y-4">
-              <p className="text-[28px] sm:text-[32px] leading-[40px] text-center font-inter font-medium text-[#0A0D14]">
-                Create account
-              </p>
-              <p className="text-[14px] leading-[20px] text-[#525866] text-center font-inter tracking-[-0.006em]">
-                Thank you for signing up. To start enjoying the benefits, let s
-                set up your account.
-              </p>
-            </div>
-        
+          <div className="space-y-4">
+            <p className="text-[28px] sm:text-[32px] leading-[40px] text-center font-inter font-medium text-[#0A0D14]">
+              Create account
+            </p>
+            <p className="text-[14px] leading-[20px] text-[#525866] text-center font-inter tracking-[-0.006em]">
+              Thank you for signing up. To start enjoying the benefits,  let&apos;s
+              set up your account.
+            </p>
+          </div>
+
           {/* Input Section */}
           <div className="mt-8 space-y-6">
             {/* Email Field */}
@@ -38,18 +37,18 @@ const CreateAccount = () => {
               <input
                 type="email"
                 placeholder="Your email"
-                className="w-full h-[40px] px-4 rounded-[10px] border border-[#E2E4E9] shadow-[0px_1px_2px_0px_#E4E5E73D] outline-none text-[14px] font-['Inter']"
+                className="w-full h-[40px] px-4 rounded-[10px] border border-[#E2E4E9] shadow-[0px_1px_2px_0px_#E4E5E73D] outline-none text-[14px] font-inter tracking-[-0.006em]"
               />
             </div>
 
             {/* Buttons Section */}
             <div className="space-y-4">
               {/* Proceed Button */}
-              <Link href="/login">
+              <Link href="/email">
                 <button
                   className="w-full h-[40px]  text-[14px] font-medium rounded-[10px] flex items-center justify-center gap-2 font-inter
                                    
-    bg-[#20232D] text-[#FFFFFF] tracking-[-0.006em]  font-inter
+    bg-[#20232D] text-[#FFFFFF] tracking-[-0.006em]  font-inter mb-2
                                 "
                 >
                   Proceed
@@ -74,4 +73,4 @@ const CreateAccount = () => {
   );
 };
 
-export default CreateAccount;
+export default Register;

@@ -1,9 +1,9 @@
 import React from 'react'
-import Charpage1 from '@/Components/Characters/Charpage1'
+import Data from '@/Components/User'
 const page = () => {
   return (
     <>
-    <Charpage1/>
+<Data/>
     </>
   )
 }

@@ -2,7 +2,9 @@ import React from 'react'
 
 const General = () => {
   return (
-  <h1>This Is General page in The tailwind css</h1>
+    <>
+      <h1>This Is a General Page</h1>
+    </>
   )
 }
 
