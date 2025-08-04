@@ -82,7 +82,7 @@ const Data: React.FC = () => {
                       >
                    View Bio
                       </button> <br />
-                      <Link href={`/dashboard/chatBox`}>
+                      <Link href={`/pages/page14`}>
                         <button className="px-2 py-1 w-[86px] h-[32px] rotate-0 opacity-100 gap-[2px] p-[6px] rounded-[8px] text-[#525866] bg-[#FFFFFF] shadow-[0px_1px_2px_0px_#5258660F] border border-[#E2E4E9] font-Inter font-medium text-[14px] leading-[20px] tracking-[-0.006em] text-center text-sm hover:white hover:text-black mb-2">
                           Chat
                         </button>
