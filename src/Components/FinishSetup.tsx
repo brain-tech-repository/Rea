@@ -76,11 +76,14 @@ const FinishSetup = () => {
           </div>
 
           {/* Buttons */}
+            
           <div className="flex flex-col gap-2">
+             <Link href="/pages/page6">
             <button className="px-6 text-sm hover:bg-gray-800 transition w-full h-[40px] text-[14px] font-medium rounded-[10px] flex items-center justify-center gap-2 bg-[#20232D] text-white tracking-[-0.006em] font-inter">
               Start getting answers
             </button>
-            <Link href="https://www.google.com">
+            </Link>
+            <Link href="">
               <button className="bg-transparent text-gray-700 hover:bg-gray-100 border border-transparent w-full h-[40px] gap-1 rounded-[10px] px-5">
                 Back to sign up
               </button>

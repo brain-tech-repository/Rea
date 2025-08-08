@@ -39,7 +39,7 @@ const ForgotPass = () => {
             {/* Buttons Section */}
             <div className="space-y-4">
               {/* Proceed Button */}
-              <Link href="#">
+              <Link href="/resetpass">
                 <button className="
               w-full h-[40px]  text-[14px] font-medium rounded-[10px] flex items-center justify-center gap-2 
     bg-[#20232D] text-[#FFFFFF] tracking-[-0.006em]  font-inter

@@ -28,9 +28,11 @@ export default function Home1() {
         
       </div>
       <div className="mt-2">
+          <Link href="/login">
         <button className="w-48 h-10 bg-gradient-to-b from-[#fef7ec] to-[#fef3eb] text-black font-light rounded">
           Existing user? Log in
         </button>
+        </Link>
       </div>
     </div>
   );

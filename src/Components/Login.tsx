@@ -59,7 +59,7 @@ const Login = () => {
 
 
         <div className="space-y-4">
-          <Link href="/pages/page6">
+          <Link href="/pages/page14">
             <input
               type="submit"
               value="Log in"
@@ -68,7 +68,7 @@ const Login = () => {
           </Link>
 
          <div className="flex items-center justify-center w-full h-10 rounded-[10px] text-white hover:bg-[#E2E4E9] font-medium  transition">
-  <Link href="/forget">
+  <Link href="/forgot">
     <span className="text-md text-[#525866] opacity-100 pr-[4px] pl-[4px] gap-[8px]  font-medium text-[14px] leading-[20px] tracking-[-0.006em] text-center text-inter">
       Forgot Password?
     </span>

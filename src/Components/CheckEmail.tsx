@@ -63,7 +63,7 @@ const CheckEmail = () => {
 
             {/* Action Buttons */}
             <div className="space-y-4">
-              <Link href="/login">
+              <Link href="/finish">
                 <button className="w-full h-[40px] bg-black text-white text-[14px] font-medium rounded-[10px] hover:bg-gray-800 transition">
                   Proceed
                 </button>

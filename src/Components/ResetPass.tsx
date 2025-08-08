@@ -43,7 +43,7 @@ const ResetPass = () => {
 
           {/* Buttons Section */}
           <div className="space-y-4">
-            <Link href="#">
+            <Link href="/login">
               <button className="w-full h-[40px] bg-[#20232D] text-white tracking-[-0.006em] text-[14px] font-medium rounded-[10px] flex items-center justify-center gap-2 font-inter">
                 Proceed
               </button>

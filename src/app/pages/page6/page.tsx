@@ -65,7 +65,7 @@ export default function Page6() {
 
             <button
               className="h-10 rounded-[10px] bg-white hover:bg-[#E2E4E9]"
-              onClick={() => router.push('/char1')}
+              onClick={() => router.push('/login')}
             >
               Continue with a free trial
             </button>
