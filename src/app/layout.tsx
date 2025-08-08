@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { ReduxProvider } from '../app/redux/provider'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from "./components/LayoutWrapper"; // 👈 updated
 import { Inter } from 'next/font/google';
+
+
 
 
 
@@ -25,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable}`}>
-        <LayoutWrapper>{children}</LayoutWrapper>
+         <ReduxProvider><LayoutWrapper>{children}</LayoutWrapper></ReduxProvider>
       </body>
     </html>
   );

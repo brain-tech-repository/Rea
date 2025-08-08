@@ -1,6 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { addImage } from "@/app/redux/slices/imageSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 // Define a type for Character instead of using any
 type Character = {
@@ -13,7 +15,34 @@ type Character = {
 const Data: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [bioModal, setBioModal] = useState(false);
-  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
+
+   const image = useSelector((state: any) => state.images.selectedImage)
+ 
+ 
+   const dispatch = useDispatch();
+  type ImageItem = { name: string; img: string; bio: string };
+ 
+ const handleImageClick = (img: ImageItem) => {
+   dispatch(addImage(img)); // make sure your slice accepts this shape
+ };
+
+    const [selectedCharacter, setSelectedCharacter] = useState({
+      name: "Rea",
+      img: "/rea.png",
+      bio:"Me AI"
+    });
+
+      useEffect(() => {
+      if (image) {
+        setSelectedCharacter({
+          name: 'Rea',
+          img: image.img, 
+          bio:image.bio  
+          // 👈 Set Redux image here
+        })
+      }
+    }, [image])
+
 
   const characters: Character[] = [
 
@@ -37,6 +66,8 @@ const Data: React.FC = () => {
     { id: 8, name: "Mary", img: "/Paul (7).png", bio: "Mary was the mother of Jesus Christ." },
     { id: 9, name: "Deborah", img: "/Paul (8).png", bio: "Deborah was a prophetess and judge of Israel." }
   ];
+
+
 
   return (
     <>
@@ -76,14 +107,17 @@ const Data: React.FC = () => {
                             <button
                         className="px-2 py-1 hover:bg-black shadow-[0px_1px_2px_0px_#5258660F]  bg-[#20232D] text-sm text-[#FFFFFF] mb-2  w-[86px] h-[32px] font-inter font-medium text-[14px] leading-[20px] tracking-[-0.006em] text-center opacity-100 gap-[2px] p-[6px] rounded-[8px] mt-2"
                         onClick={() => {
-                          setSelectedCharacter(item);
+                            handleImageClick(item)
                           setBioModal(true);
                         }}
                       >
                    View Bio
                       </button> <br />
                       <Link href={`/pages/page14`}>
-                        <button className="px-2 py-1 w-[86px] h-[32px] rotate-0 opacity-100 gap-[2px] p-[6px] rounded-[8px] text-[#525866] bg-[#FFFFFF] shadow-[0px_1px_2px_0px_#5258660F] border border-[#E2E4E9] font-Inter font-medium text-[14px] leading-[20px] tracking-[-0.006em] text-center text-sm hover:white hover:text-black mb-2">
+                        <button   onClick={() => {
+                  
+                    handleImageClick(item)
+                  }}   className="px-2 py-1 w-[86px] h-[32px] rotate-0 opacity-100 gap-[2px] p-[6px] rounded-[8px] text-[#525866] bg-[#FFFFFF] shadow-[0px_1px_2px_0px_#5258660F] border border-[#E2E4E9] font-Inter font-medium text-[14px] leading-[20px] tracking-[-0.006em] text-center text-sm hover:white hover:text-black mb-2">
                           Chat
                         </button>
                       </Link>

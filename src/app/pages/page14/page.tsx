@@ -4,14 +4,30 @@ import React, { useState } from "react";
 import SampleQuestions from "../../components/SampleQuestions";
 import dynamic from "next/dynamic";
 import VoicePitchGraph from "@/app/voice/page";
+
+
 const ReactMediaRecorder = dynamic(
   () => import("react-media-recorder").then((mod) => mod.ReactMediaRecorder),
   { ssr: false }
 );
 
-import { Mic, Plus, ArrowUp, User, X, ArrowRight } from "lucide-react";
+import { Mic, Plus, ArrowUp, User, X, ArrowRight, Image } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { addImage } from "../../redux/slices/imageSlice";
+import { start } from "repl";
 
 export default function Page14() {
+
+  const image = useSelector((state: any) => state.images.selectedImage)
+
+
+  const dispatch = useDispatch();
+  type ImageItem = { name: string; img: string; bio:string };
+
+  const handleImageClick = (img: ImageItem) => {
+    dispatch(addImage(img)); // make sure your slice accepts this shape
+  };
+
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -21,20 +37,39 @@ export default function Page14() {
   const [isLoading, setIsLoading] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
   const [isRecording, setIsRecording] = useState(false);
   const [recordTime, setRecordTime] = useState(0);
   const [hideParent, setHideParent] = useState(false);
   const [isSamplesVisible, setIsSamplesVisible] = useState(false);
-
   const showSamples = () => setIsSamplesVisible(true);
   const hideSamples = () => setIsSamplesVisible(false);
   const [shouldHideSamples, setShouldHideSamples] = useState(false);
   const [isBetterDivVisible, setIsBetterDivVisible] = useState(false);
+
+  useEffect(() => {
+    if (image) {
+      setSelectedCharacter({
+        name: 'image.name',
+        img: image.img, // 👈 Set Redux image here
+      })
+    }
+    else {
+
+      setSelectedCharacter({
+        name: 'Rea',
+        img: "/rea.png", // 👈 Set Redux image here
+      })
+
+    }
+  }, [image])
   const [selectedCharacter, setSelectedCharacter] = useState({
+
     name: "Rea",
     img: "/rea.png",
   });
+
+
+
 
   type Character = {
     name: string;
@@ -196,17 +231,15 @@ export default function Page14() {
 
       {/* Main Area */}
       <div
-        className={`flex flex-col w-full max-w-3xl mx-auto transition-all duration-300 ${
-          (isInputFocused || hideGreeting) && !isSamplesVisible
-            ? " flex-1 justify-between h-full"
-            : "justify-center flex-1 "
-        }`}
+        className={`flex flex-col w-full max-w-3xl mx-auto transition-all duration-300 ${(isInputFocused || hideGreeting) && !isSamplesVisible
+          ? " flex-1 justify-between h-full"
+          : "justify-center flex-1 "
+          }`}
       >
         {!hideGreeting && (
           <div
-            className={`transition-all duration-300 ${
-              isInputFocused ? "mb-3" : ""
-            }`}
+            className={`transition-all duration-300 ${isInputFocused ? "mb-3" : ""
+              }`}
           >
             <div className="flex justify-between items-center  px-5 mb-1">
               <div className="flex flex-col gap-1">
@@ -220,26 +253,24 @@ export default function Page14() {
                 </p>
               </div>
               <div className="w-[80px] h-[80px] rounded-full bg-[#E2E4E9] overflow-hidden border border-white">
-                <img
-                  src="/rea.png"
-                  alt="Rea avatar"
-                  className="w-full h-full object-cover"
-                />
+                {image ? (
+                  <img src={image.img} />
+                ) : (
+                  <img src={selectedCharacter.img} />
+                )}
               </div>
             </div>
           </div>
         )}
         <div
-          className={`flex-1 overflow-y-auto mt-6 mb-4 px-2 space-y-4 ${
-            isInputFocused || hideGreeting ? "block" : "hidden"
-          }`}
+          className={`flex-1 overflow-y-auto mt-6 mb-4 px-2 space-y-4 ${isInputFocused || hideGreeting ? "block" : "hidden"
+            }`}
         >
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={`max-w-[75%] w-fit flex gap-2 items-start ${
-                msg.type === "incoming" ? "" : "self-end ml-auto"
-              }`}
+              className={`max-w-[75%] w-fit flex gap-2 items-start ${msg.type === "incoming" ? "" : "self-end ml-auto"
+                }`}
             >
               {msg.type === "incoming" && (
                 <div className="w-6 h-6 mt-1 rounded-full overflow-hidden flex-shrink-0">
@@ -255,11 +286,10 @@ export default function Page14() {
                 </div>
               )}
               <div
-                className={`px-4 py-3 rounded-2xl text-sm ${
-                  msg.type === "incoming"
-                    ? "bg-[#FEF3EB] text-black"
-                    : "bg-[#F6F8FA] text-[#0A0D14]"
-                }`}
+                className={`px-4 py-3 rounded-2xl text-sm ${msg.type === "incoming"
+                  ? "bg-[#FEF3EB] text-black"
+                  : "bg-[#F6F8FA] text-[#0A0D14]"
+                  }`}
               >
                 {msg.text}
               </div>
@@ -502,21 +532,22 @@ export default function Page14() {
           <div className="p-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {[
-                { name: "Paul", img: "/Paul (1).png" },
-                { name: "Paul", img: "/Paul (2).png" },
-                { name: "Paul", img: "/Paul (3).png" },
-                { name: "Paul", img: "/Paul (4).png" },
-                { name: "Paul", img: "/Paul (5).png" },
-                { name: "Paul", img: "/Paul (6).png" },
-                { name: "Paul", img: "/Paul (7).png" },
-                { name: "Paul", img: "/Paul (8).png" },
-                { name: "Paul", img: "/Paul (10).png" },
+                { id: 1, name: "Elijah", img: "/Paul (10).png", bio: "Hello, I am Paul, originally known as Saul of Tarsus. I was a devout Pharisee and a zealous persecutor of early Christians. However, on my journey to Damascus, I experienced a profound vision of Jesus Christ, leading to my conversion. Following this, I dedicated my life to spreading the teachings of Jesus. I authored several epistles, including Romans, Corinthians and Philippians, which form a significant portion of the New Testament." },
+                { id: 2, name: "Elijah", img: "/Paul (1).png", bio: "Elijah was a prophet and a miracle worker." },
+                { id: 3, name: "King David", img: "/Paul (2).png", bio: "David was the second king of Israel and a great warrior." },
+                { id: 4, name: "Moses", img: "/Paul (3).png", bio: "Moses led the Israelites out of Egypt." },
+                { id: 5, name: "Peter", img: "/Paul (4).png", bio: "Peter was one of the twelve apostles of Jesus." },
+                { id: 6, name: "King Solomon", img: "/Paul (5).png", bio: "Solomon was known for his wisdom and built the First Temple." },
+                { id: 7, name: "Esther", img: "/Paul (6).png", bio: "Esther was a Jewish queen who saved her people." },
+                { id: 8, name: "Mary", img: "/Paul (7).png", bio: "Mary was the mother of Jesus Christ." },
+                { id: 9, name: "Deborah", img: "/Paul (8).png", bio: "Deborah was a prophetess and judge of Israel." },
               ].map((item, index) => (
                 <div
                   key={index}
                   onClick={() => {
-                    setSelectedCharacter(item);
+                    // setSelectedCharacter(item);
                     setShowModal(false);
+                    handleImageClick(item)
                   }}
                   className="rounded-lg p-4 shadow hover:shadow-md cursor-pointer flex flex-col items-center gap-2"
                 >
@@ -601,18 +632,16 @@ export default function Page14() {
                       ].map((name, index) => (
                         <div
                           key={name}
-                          className={`flex items-center p-2 px-4 rounded-full transition-colors duration-300 ${
-                            index === 0
-                              ? "bg-[#FEF3EB]"
-                              : "bg-[#F6F8FA] hover:bg-gray-200"
-                          }`}
+                          className={`flex items-center p-2 px-4 rounded-full transition-colors duration-300 ${index === 0
+                            ? "bg-[#FEF3EB]"
+                            : "bg-[#F6F8FA] hover:bg-gray-200"
+                            }`}
                         >
                           <p
-                            className={`text-sm leading-5 tracking-tight font-inter ${
-                              index === 0
-                                ? "text-[#C2540A] font-medium"
-                                : "text-[#525866] font-normal"
-                            }`}
+                            className={`text-sm leading-5 tracking-tight font-inter ${index === 0
+                              ? "text-[#C2540A] font-medium"
+                              : "text-[#525866] font-normal"
+                              }`}
                           >
                             {name}
                           </p>
